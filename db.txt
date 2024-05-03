@@ -1,0 +1,26 @@
+TABELLE
+
+TABELLA users
+ `id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+    `username` VARCHAR(255),
+    `email` VARCHAR(255) UNIQUE,
+    `password` VARCHAR(255),
+    `birthdate` DATE DEFAULT NULL,
+    `phone` VARCHAR(255) UNIQUE DEFAULT NULL
+
+TABELLA posts
+`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+ FK `user_id` INT(11),
+    `title` VARCHAR(255) DEFAULT NULL,
+    `date` DATETIME,
+    `tags` JSON,
+
+TABELLA medias
+`id` INT(11) PRIMARY KEY AUTO_INCREMENT,
+ FK `user_id` INT(11),
+    `type` ENUM('photo', 'video'),
+    `path` VARCHAR(255)
+
+TABELLA media_post
+`post_id` INT(11),
+`media_id` INT(11)
